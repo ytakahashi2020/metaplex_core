@@ -109,28 +109,28 @@ const createNft = async () => {
   // ** Creating the NFT **
   //
 
-  //   // We generate a signer for the NFT
-  //   const asset = generateSigner(umi);
+  // We generate a signer for the NFT
+  const asset = generateSigner(umi);
 
-  //   console.log("Creating NFT...");
-  //   const tx = await create(umi, {
-  //     asset,
-  //     name: "My NFT",
-  //     uri: metadataUri,
-  //   }).sendAndConfirm(umi);
+  console.log("Creating NFT...");
+  const tx = await create(umi, {
+    asset,
+    name: "My NFT",
+    uri: metadataUri,
+  }).sendAndConfirm(umi);
 
-  //   // Finally we can deserialize the signature that we can check on chain.
-  //   const signature = base58.deserialize(tx.signature)[0];
+  // Finally we can deserialize the signature that we can check on chain.
+  const signature = base58.deserialize(tx.signature)[0];
 
   // Log out the signature and the links to the transaction and the NFT.
-  //   console.log("\nNFT Created");
-  //   console.log("View Transaction on Solana Explorer");
-  //   console.log(`https://explorer.solana.com/tx/${signature}?cluster=devnet`);
-  //   console.log("\n");
-  //   console.log("View NFT on Metaplex Explorer");
-  //   console.log(
-  //     `https://core.metaplex.com/explorer/${asset.publicKey}?env=devnet`
-  //   );
+  console.log("\nNFT Created");
+  console.log("View Transaction on Solana Explorer");
+  console.log(`https://explorer.solana.com/tx/${signature}?cluster=devnet`);
+  console.log("\n");
+  console.log("View NFT on Metaplex Explorer");
+  console.log(
+    `https://core.metaplex.com/explorer/${asset.publicKey}?env=devnet`
+  );
 };
 
 createNft();
