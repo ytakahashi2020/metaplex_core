@@ -64,7 +64,10 @@ const createNft = async () => {
     throw new Error(err);
   });
 
-  console.log("imageUri: " + imageUri[0]);
+  // Replace the Arweave gateway part with the Irys gateway
+  const irysImageUri = imageUri[0].replace("arweave.net", "gateway.irys.xyz");
+
+  console.log("imageUri: " + irysImageUri);
 
   //
   // ** Upload Metadata to Arweave **
@@ -73,7 +76,7 @@ const createNft = async () => {
   const metadata = {
     name: "My NFT",
     description: "This is an NFT on Solana",
-    image: imageUri[0],
+    image: irysImageUri,
     external_url: "https://example.com",
     attributes: [
       {
@@ -103,7 +106,13 @@ const createNft = async () => {
     throw new Error(err);
   });
 
-  console.log("metadataUri: " + metadataUri);
+  // Replace the Arweave gateway part with the Irys gateway
+  const irysMetadataUri = metadataUri.replace(
+    "arweave.net",
+    "gateway.irys.xyz"
+  );
+
+  console.log("metadataUri: " + irysMetadataUri);
 
   //
   // ** Creating the NFT **
@@ -116,7 +125,7 @@ const createNft = async () => {
   const tx = await create(umi, {
     asset,
     name: "My NFT",
-    uri: metadataUri,
+    uri: irysMetadataUri,
   }).sendAndConfirm(umi);
 
   // Finally we can deserialize the signature that we can check on chain.
